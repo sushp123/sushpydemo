@@ -27,10 +27,10 @@ jobs:
     - name: python install
       working-directory: .
       run: |
-        sudo apt remove python3.7
-        sudo apt autoremove
+        sudo apt-get remove python3.7
+        sudo apt-get autoremove
         sudo apt-get update -y
-        sudo apt install python3.7
+        sudo apt-get install python3.7
         sudo apt-get install -y python3.7-venv
         python -m venv --copies antenv
         source antenv/bin/activate
