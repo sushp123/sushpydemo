@@ -18,16 +18,16 @@ jobs:
     - uses: actions/checkout@master
 
     # setup python
-    - name: Setup Python 2.7.16
+    - name: Setup Python 3.7.11
       uses: actions/setup-python@v1
       with:
-        python-version: 2.7.16
+        python-version: 3.7.11
 
     # install dependencies
     - name: python install
       working-directory: .
       run: |
-        sudo apt install python3.7-venv
+        sudo apt install python3.7.11-venv
         python -m venv --copies antenv
         source antenv/bin/activate
         pip install setuptools
