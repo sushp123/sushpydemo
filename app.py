@@ -1,11 +1,17 @@
 import urllib3
 from collections import Counter
+import requests
 
 target_url = "https://www.gutenberg.org/files/2701/2701-0.txt"
 
-http = urllib3.PoolManager()
-response = http.request('GET', target_url)
-data = response.data.decode('utf-8')
+#Http request to URL
+try:
+    http = urllib3.PoolManager()
+    response = http.request('GET', target_url)
+    data = response.data.decode('utf-8')
+
+except requests.exceptions.HTTPError as err:
+    print(err)
 
 stopwords = set(line.strip() for line in open('stopwords.txt'))
 stopwords = stopwords.union(set(['the', 'of', 'to', 'and', 'a', 'in', 'is', 'it', 'you', 'that', 'he', 'was', 'for', 'on', 'are', 'with', 'as', 'I', 'his', 'they', 'be', 'at', 'one', 'have', 'this', 'from', 'or', 'had', 'by', 'not', 'word', 'but', 'what', 'some', 'we', 'can', 'out', 'other', 'were', 'all', 'there', 'when', 'up', 'use', 'your', 'how', 'said', 'an', 'each', 'she']))
